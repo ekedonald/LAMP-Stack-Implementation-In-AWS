@@ -162,8 +162,234 @@ curl -s http://169.254.169.254/latest/meta-data/public-ipv4
 
 ![public ip address2](./images/5.%20public%20ip%20address2.png)
 
-It can also be retrieved by clicking on the Instance ID of the Ruunning Instance ash shown below:
+It can also be retrieved by clicking on the Instance ID of the Ruunning Instance as shown below:
 
 ![public ip address1](./images/5.%20public%20ip%20address1.png)
 
 ### STEP 5: Installing MySql
+* Install the MySql package using apt.
+
+```bash
+sudo apt install mysql-server
+```
+
+* Log into the MySql console by running the command below:
+
+```bash
+sudo mysql
+```
+
+This will connect to the MySql server as the administrative database user root. You should see output like this:
+
+![mysql](./images/8.%20mysql.png)
+
+* Run a security script that comes pre-instaleld with MySql. Thi sscript remove insecure default settings and lock down access to your database system. Before running the script, you will set a password for the root user, using *mysql_native_password* as default authentication method. We're defining this user's password as `PassWord.1`
+
+```bash
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'PassWord.1';
+```
+
+![sql aunthentication1](./images/9.%20sql%20aunthentication1.png)
+
+* Exit the MySql shell by running the command below:
+
+![sql authentication2](./images/9.%20sql%20aunthentication2.png)
+
+* Start the interactive script by running the command below:
+
+```bash
+sudo mysql_secure_installation
+```
+
+![sql secure installation](./images/9.%20sql%20secure%20intallation.png)
+
+* This will ask if you want to configure the `VALIDATE PASSWORD PLUGIN`. Enabling this feature is something of a judgement call. If enabled, passwords which don't match the specified criteria will be rejected by MySql with an error. It is safe to leave validation disabled, but you should always use strong, unique passwords for database credentials. Answer `Y` for yes for the validate password plugin prompt.
+
+![sql validate password1](./images/9.%20sql%20validate%20password1.png)
+
+* If you select "yes", you will be asked to select the level of password validation. Keep in mind that if you enter `2` for the strongest level, your password will need to contain a numeric, mixed casse abd special character e.g `PassWord.1`. Note the highlighted password has already been set so you select `n` to leave the password for root unchanged.
+
+![sql validate password2](./images/9.%20sql%20validate%20password2.png)
+
+* Remove anonymous user by typing `y`.
+
+![sql validate password3](./images/9.%20sql%20validate%20password3.png)
+
+* Disallow root login remotely by typing `n`.
+
+![sql validate password4](./images/9.%20sql%20validate%20password4.png)
+
+* Disallow removing test database and access by typing `n`. Reload privilege tables by typing `y`.
+
+![sql validate password5](./images/9.%20sql%20validate%20password5.png)
+
+* Test if you are able to log in to the MySql console by running the command below:
+
+```bash
+sudo mysql -p
+```
+
+![sql validate password6](./images/9.%20sql%20validate%20password6.png)
+
+The `-p` flag in the command will prompt you for the password.
+
+* Exit the MySql console by typing `exit`.
+
+![sql validate password7](./images/9.%20sql%20validate%20password7.png)
+
+### STEP 6: Installing Php
+
+In addition to the `php` package, you'll need `php-mysql`, a php module that allows php to communicate with MySql-based databases and you'll also need `libapache2-mod-php` to enable apache to hanlde php files. Core php packages will automatically be installed as dependencies.
+
+* To install these 3 packages ar once, run:
+
+```bash
+sudo apt install php libapache2-mod-php php-mysql
+```
+
+![install php](./images/10.%20install%20php.png)
+
+* Once installation has been completed, run the command below to check the version of php installed.
+
+```bash
+php -v
+```
+
+![php version](./images/10.%20php%20version.png)
+
+At this point, the LAMP stack is completely installed and fully operational.
+
+### STEP 6: Enable Php On The Website
+
+Within the default *Directory Index* settings on Apache, a file named `index.html` will always take precedence over an `index.php` file. If you run the command `sudo vim /etc/apache2/mods-enabled/dir.conf`, it'll display a prompt of the order of preference of files in the *Directory Index*. The order of preference is from left to right. 
+
+```bash
+sudo vim /etc/apache2/mods-enabled/dir.conf
+```
+
+![Direcory Index Preference1](./images/10.%20Directory%20Index%20Preference1.png)
+
+* Hence, to prioritize the `index.php` file, move its position as shown below.
+
+![Direcory Index Prefernce2](./images/10.%20Directory%20Index%20Preference2.png)
+
+* After saving and closing the file, reload apache for changes to take effect.
+
+```bash
+sudo systemctl reload apache2
+```
+
+![reload apache2](./images/14.%20system%20reload.png)
+
+* Create a php script to test if php is correctly installed on your server. Run the following command and write the code below into the empty file you created as shown below:
+
+```bash
+sudo vim /var/www/projectlamp/index.php
+```
+
+![php info](./images/10.%20php%20info.png)
+
+* The default directory the apache server will search for files is `/var/www/html` and the server not be able to load the `index.php` file on your browser since the php file isn't in that directory. To change the directory to `/var/www/projectlamp`, run the following command:
+
+```bash
+sudo vim /etc/apache2/sites-available/000-default.conf
+```
+![default location](./images/10.%20default%20location%20for%20html%20file.png)
+
+![new location](./images/10.%20new%20location%20for%20html%20file.png)
+
+* When you are finished, refresh your browser and you'll get a page similar to this:
+
+![php webpage](./images/10.%20php%20webpage.png)
+
+After checking the relevant information about your php server through that page, it's best to remove the file you created as it contains sensitive information about your php environment and ubuntu server. Remove the file using the command below:
+
+```bash
+sudo rm /var/www/projectlamp/index.php
+```
+
+### STEP 7: Creating A Virtual Host For Your Website Using Apache
+
+* Assign ownership of the directory with the `$USER` environment variable which reference your current system user:
+
+```bash
+sudo chown -R $USER:$USER /var/www/projectlamp
+```
+
+* Then create and open a new configuration file in apache's `sites-available` directory using the command below:
+
+```bash
+sudo vi /etc/apache2/sites-available/projectlamp.conf
+```
+* Copy the following code into the `projectlamp.conf` file and save:
+
+```bash
+<VirtualHost *:80>
+    ServerName projectlamp
+    ServerAlias www.projectlamp 
+    ServerAdmin webmaster@localhost
+    DocumentRoot /var/www/projectlamp
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+```
+
+* Use the `ls` command to show the new file in the *sites-available* directory as shown below:
+
+```bash
+sudo ls /etc/apache2/sites-available
+```
+
+![ls apapche2 sites-available](./images/14.%20ls%20apache2%20sites-available.png)
+
+* Use the *a2ensite* command to enable the new virtual host:
+
+```bash
+sudo a2ensite projectlamp
+```
+
+![a2ensite projectlamp](./images/14.%20a2ensite%20projectlamp.png)
+
+* You might want to disbale the default website that comes with apache. This is required if you're not using a custom domain name because in this case apache's default configuration would overwrite your virtual host. To disable apache's default website, use the *a2dissite* command.
+
+```bash
+sudo a2dissite 000-default
+```
+
+* To make sure your configuration file doesn't contain syntax erors, run the command below:
+
+```bash
+sudo apache2ctl configtest
+```
+
+![apache2ctl configtest](./images/14.%20apache2ctl%20configtest.png)
+
+* Finally, reload apache so these changes can take effect.
+
+```bash
+sudo systemctl reload apache2
+```
+
+* Your website is now active but the web root `/var/www/projectlamp` is empty. Creare an `index.html` in that location so you can test if the virtual host works as expected using the command below:
+
+```bash
+sudo touch /var/www/projectlamp/index.html 
+```
+
+![system reload](./images/14.%20system%20reload.png)
+
+* Run the command below to input information into the `index.html` file so you can test if the virtual host works as well.
+
+```bash
+sudo echo 'Hello LAMP from hostname' $(curl -s http://169.254.169.254/latest/meta-data/public-hostname) 'with public IP' $(curl -s http://169.254.169.254/latest/meta-data/public-ipv4) > /var/www/projectlamp/index.html
+```
+
+* Go to your browser and open your website url using IP address:
+
+```bash
+http://<Public-IP-Address>:80
+```
+
+![updated html index](./images/14.%20updated%20html%20index.png)
+
+If you see the text from the `echo` command you wrote to the `index.html` file, then it means your apache virtual host is working as expected.
