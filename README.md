@@ -17,7 +17,7 @@ Sitting on top of them all is the fourth and final layer. PHP stands for PHP: Hy
 
 ![Lamp Stack](./images/0.%20LAMP%20Stack.jpeg)
 
-Visual Representation of the LAMP Stack
+*Visual Representation of the LAMP Stack*
 
 ## How It Works
 Whenever you open a website through a browser, the LAMP stack is triggered, and the information it processes goes through the following flow. The web application makes a request from the web browser. The LAMP stack then initiates the Apache web server and MySQL, which use PHP for their communication. 
