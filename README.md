@@ -37,7 +37,7 @@ The following steps are taken to lauch an EC2 Instance on AWS:
 
 ![Launch Instance](./images/0.%20Launch%20Instance1.png)
 
-* Give the EC2 Instance a name of your choice and search for the preferred Virtual Server (i.e Ubuntu).
+* Give the EC2 Instance a name of your choice and search for the preferred Virtual Server (i.e. Ubuntu).
 
 ![Launch Instance2](./images/0.%20Launch%20Instance2.png)
 
@@ -64,7 +64,7 @@ The following steps are taken to lauch an EC2 Instance on AWS:
 
 ### Step 2: Connect To EC2 Using SSH
 
-The follwowing steps are taken to SSH into an EC2 instance:
+The following steps are taken to SSH into an EC2 instance:
 
 * On the EC2 Dashboard, click on the Running Instances tab.
 
@@ -128,7 +128,7 @@ sudo systemctl status apache2
 
 ### Step 4: Updating The Firewall
 
-Before any traffic can be received by the web server, you need to open TCP port 80 which is the default port browsers use to connect to access web pages on the internet. The following steps are taken open TCP port 80:
+Before any traffic can be received by the web server, you need to open TCP port 80 which is the default port browsers use to connect to access web pages on the internet. The following steps are taken to open TCP port 80:
 
 * Click on Security Groups on the EC2 Dashboard.
 
@@ -144,7 +144,7 @@ Before any traffic can be received by the web server, you need to open TCP port 
 
 ![firewall3](./images/4.%20inbound%20rules.png)
 
-Finally, the server can now be accesssed locally and from any IPv4 addres. To check if you can access the server locally in Ubuntu, run the following command:
+Finally, the server can now be accessed locally and from any IPv4 addres. To check if you can access the server locally in Ubuntu, run the following command:
 
 ```bash
 curl http://localhost:80
@@ -160,7 +160,7 @@ http://<Public-IP-Address>:80
 
 ![http ip address](./images/6.%20http-ip%20address.png)
 
-The public ip address can be retrieved by running the following command:
+The public IP address can be retrieved by running the following command:
 
 ```bash
 curl -s http://169.254.169.254/latest/meta-data/public-ipv4
@@ -188,11 +188,11 @@ sudo apt install mysql-server
 sudo mysql
 ```
 
-This will connect to the MySql server as the administrative database user root. You should see output like this:
+This will connect to the MySql server as the administrative database user root. You should see an output like this:
 
 ![mysql](./images/8.%20mysql.png)
 
-* Run a security script that comes pre-instaleld with MySql. Thi script removes insecure default settings and lock down access to your database system. Before running the script, you will set a password for the root user, using *mysql_native_password* as the default authentication method. You are defining this user's password as `PassWord.1`
+* Run a security script that comes pre-installed with MySql. This script removes insecure default settings and locks down access to your database system. Before running the script, you will set a password for the root user, using *mysql_native_password* as the default authentication method. You are defining this user's password as `PassWord.1`
 
 ```bash
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'PassWord.1';
@@ -212,11 +212,11 @@ sudo mysql_secure_installation
 
 ![sql secure installation](./images/9.%20sql%20secure%20intallation.png)
 
-* This will ask if you want to configure the `VALIDATE PASSWORD PLUGIN`. Enabling this feature is something of a judgement call. If enabled, passwords which don't match the specified criteria will be rejected by MySql with an error. It is safe to leave validation disabled, but you should always use strong, unique passwords for database credentials. Answer `Y` for yes for the validate password plugin prompt.
+* This will ask if you want to configure the `VALIDATE PASSWORD PLUGIN`. Enabling this feature is something of a judgment call. If enabled, passwords that don't match the specified criteria will be rejected by MySql with an error. It is safe to leave validation disabled, but you should always use strong, unique passwords for database credentials. Answer `Y` for yes for the validate password plugin prompt.
 
 ![sql validate password1](./images/9.%20sql%20validate%20password1.png)
 
-* If you select "yes", you will be asked to select the level of password validation. Keep in mind that if you enter `2` for the strongest level, your password will need to contain a numeric, mixed casse abd special character e.g `PassWord.1`. Note the highlighted password has already been set so you select `n` to leave the password for root unchanged.
+* If you select "yes", you will be asked to select the level of password validation. Keep in mind that if you enter `2` for the strongest level, your password will need to contain a numeric, mixed case and special character e.g. `PassWord.1`. Note the highlighted password has already been set so you select `n` to leave the password for root unchanged.
 
 ![sql validate password2](./images/9.%20sql%20validate%20password2.png)
 
@@ -248,9 +248,9 @@ The `-p` flag in the command will prompt you for the password.
 
 ### Step 6: Installing Php
 
-In addition to the `php` package, you'll need `php-mysql`, a php module that allows php to communicate with MySql-based databases and you'll also need `libapache2-mod-php` to enable apache to hanlde php files. Core php packages will automatically be installed as dependencies.
+In addition to the `php` package, you'll need `php-mysql`, a php module that allows php to communicate with MySql-based databases and you'll also need `libapache2-mod-php` to enable apache to handle php files. Core php packages will automatically be installed as dependencies.
 
-* To install these 3 packages at once, run:
+* To install these 3 packages at once, run the following command:
 
 ```bash
 sudo apt install php libapache2-mod-php php-mysql
@@ -320,7 +320,7 @@ sudo rm /var/www/projectlamp/index.php
 
 ### Step 7: Creating A Virtual Host For Your Website Using Apache
 
-* Assign ownership of the directory with the `$USER` environment variable which reference your current system user:
+* Assign ownership of the directory to the `$USER` environment variable which references your current system user:
 
 ```bash
 sudo chown -R $USER:$USER /var/www/projectlamp
@@ -382,7 +382,7 @@ sudo systemctl reload apache2
 
 ![system reload](./images/14.%20system%20reload.png)
 
-* Your website is now active but the web root `/var/www/projectlamp` is empty. Create an `index.html` in that location so you can test if the virtual host works as expected using the command below:
+* Your website is now active but the web root `/var/www/projectlamp` is empty. Create an `index.html` file in that location so you can test if the virtual host works as expected using the command below:
 
 ```bash
 touch /var/www/projectlamp/index.html 
