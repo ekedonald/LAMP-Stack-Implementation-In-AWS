@@ -100,7 +100,7 @@ ssh -i <private-key-name>.pem ubuntu@<Public-IP-address>
 
 ![SSH Instance2](./images/0.%20SSH%20Instance2.png)
 
-### STEP 3: Installing Apache
+### Step 3: Installing Apache
 
 * Update the list of packages in the package manager.
 
@@ -232,7 +232,7 @@ sudo mysql_secure_installation
 
 ![sql validate password5](./images/9.%20sql%20validate%20password5.png)
 
-* Test if you are able to log in to the MySql console by running the command below:
+* Test if you are able to log into the MySql console by running the command below:
 
 ```bash
 sudo mysql -p
