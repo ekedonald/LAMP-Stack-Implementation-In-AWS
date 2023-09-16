@@ -33,7 +33,7 @@ After the PHP function is done, the output is then relayed back to the web serve
 
 The following steps are taken to lauch an EC2 Instance on AWS:
 
-* On the EC2 Dashboard, click on the **Launch Instance button** 
+* On the EC2 Dashboard, click on the **Launch Instance button**.
 
 ![Launch Instance](./images/0.%20Launch%20Instance1.png)
 
@@ -45,7 +45,7 @@ The following steps are taken to lauch an EC2 Instance on AWS:
 
 ![Launch Instance3](./images/0.%20Launch%20Instance3.png)
 
-* Create a key pair login, the key pair login was used to SSH into the instance.
+* Create a key pair login, the key pair login was used to SSH into the Instance.
 
 ![Launch Instance4](./images/0.%20Launch%20Instance4.png)
 
@@ -57,7 +57,7 @@ The following steps are taken to lauch an EC2 Instance on AWS:
 
 ![Launch Intance5a](./images/0.%20Launch%20Instance5a.png)
 
-* Click on the Launch Instance buttonn.
+* Click on the Launch Instance button.
 
 ![Launch Instance6](./images/0.%20Launch%20Instance6.png)
 
@@ -78,7 +78,7 @@ The follwowing steps are taken to SSH into an EC2 instance:
 
 ![Launch Instance9](./images/0.%20Launch%20Instance9.png)
 
-* The highlighted commands in the image below are used to SSH into the EC2 instance.
+* The highlighted commands in the image below are used to SSH into the EC2 Instance.
 
 ![Launch Instance10](./images/0.%20Launch%20Instance10.png)
 
