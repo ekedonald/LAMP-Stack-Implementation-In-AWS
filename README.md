@@ -28,7 +28,7 @@ Once the correct PHP file is found, the written functions within it are then use
 
 After the PHP function is done, the output is then relayed back to the web server in HTML format. Also, note that sometimes a new entry in the database is made. The Apache web server then serves the dynamic content to the browser.
 
-## How To Set A LAMP Stack On AWS
+## How To Set Up A LAMP Stack On AWS
 ### Step 1: Launch An EC2 Instance
 
 The following steps are taken to lauch an EC2 Instance on AWS:
