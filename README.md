@@ -188,7 +188,7 @@ sudo apt install mysql-server
 sudo mysql
 ```
 
-This will connect to the MySql server as the administrative database user root. You should see an output like this:
+This will connect to the MySQL server as the administrative database user root. You should see an output like this:
 
 ![mysql](./images/8.%20mysql.png)
 
