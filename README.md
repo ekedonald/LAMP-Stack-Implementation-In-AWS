@@ -82,7 +82,7 @@ The following steps are taken to SSH into an EC2 instance:
 
 ![Launch Instance10](./images/0.%20Launch%20Instance10.png)
 
-* On your terminal, run the following command to `cd Downloads` to go to the location of the `.pem` private key file.
+* On your terminal, run the following command `cd Downloads` to go to the location of the `.pem` private key file.
 
 * Run the code shown below to change file permissions for the `.pem` private key file:
 
