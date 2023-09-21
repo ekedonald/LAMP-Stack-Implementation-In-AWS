@@ -152,7 +152,7 @@ curl http://localhost:80
 
 ![curl localhost](./images/4.%20curl%20localhost.png)
 
-To check if the apache HTTP server can respond to requests from the Internet, open your browser and run the following url:
+To check if the apache HTTP server can respond to requests from the Internet, open your browser and run the following URL:
 
 ```bash
 http://<Public-IP-Address>:80
@@ -172,17 +172,17 @@ It can also be retrieved by clicking on the Instance ID of the Running Instance 
 
 ![public ip address1](./images/5.%20public%20ip%20address1.png)
 
-### Step 5: Installing MySql
+### Step 5: Installing MySQL
 
-The following steps are taken to install MySql:
+The following steps are taken to install MySQL:
 
-* Install the MySql package using apt.
+* Install the MySQL package using apt.
 
 ```bash
 sudo apt install mysql-server
 ```
 
-* Log into the MySql console by running the command below:
+* Log into the MySQL console by running the command below:
 
 ```bash
 sudo mysql
@@ -192,7 +192,7 @@ This will connect to the MySql server as the administrative database user root. 
 
 ![mysql](./images/8.%20mysql.png)
 
-* Run a security script that comes pre-installed with MySql. This script removes insecure default settings and locks down access to your database system. Before running the script, you will set a password for the root user, using *mysql_native_password* as the default authentication method. You are defining this user's password as `PassWord.1`
+* Run a security script that comes pre-installed with MySQL. This script removes insecure default settings and locks down access to your database system. Before running the script, you will set a password for the root user, using *mysql_native_password* as the default authentication method. You are defining this user's password as `PassWord.1`
 
 ```bash
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'PassWord.1';
@@ -200,7 +200,7 @@ ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'PassWord
 
 ![sql aunthentication1](./images/9.%20sql%20aunthentication1.png)
 
-* Exit the MySql shell by running the command below:
+* Exit the MySQL shell by running the command below:
 
 ![sql authentication2](./images/9.%20sql%20aunthentication2.png)
 
@@ -232,7 +232,7 @@ sudo mysql_secure_installation
 
 ![sql validate password5](./images/9.%20sql%20validate%20password5.png)
 
-* Test if you are able to log into the MySql console by running the command below:
+* Test if you are able to log into the MySQL console by running the command below:
 
 ```bash
 sudo mysql -p
@@ -242,13 +242,13 @@ sudo mysql -p
 
 The `-p` flag in the command will prompt you for the password.
 
-* Exit the MySql console by typing `exit`.
+* Exit the MySQL console by typing `exit`.
 
 ![sql validate password7](./images/9.%20sql%20validate%20password7.png)
 
-### Step 6: Installing Php
+### Step 6: Installing PHP
 
-In addition to the `php` package, you'll need `php-mysql`, a php module that allows php to communicate with MySql-based databases and you'll also need `libapache2-mod-php` to enable apache to handle php files. Core php packages will automatically be installed as dependencies.
+In addition to the `PHP` package, you'll need `php-mysql`, a php module that allows PHP to communicate with MySQL-based databases and you'll also need `libapache2-mod-php` to enable apache to handle PHP files. Core PHP packages will automatically be installed as dependencies.
 
 * To install these 3 packages at once, run the following command:
 
@@ -258,7 +258,7 @@ sudo apt install php libapache2-mod-php php-mysql
 
 ![install php](./images/10.%20install%20php.png)
 
-* Once installation has been completed, run the command below to check the version of php installed.
+* Once installation has been completed, run the command below to check the version of PHP installed.
 
 ```bash
 php -v
@@ -268,7 +268,7 @@ php -v
 
 At this point, the LAMP stack is completely installed and fully operational.
 
-### Step 6: Enable Php On The Website
+### Step 6: Enable PHP On The Website
 
 Within the default *Directory Index* settings on Apache, a file named `index.html` will always take precedence over an `index.php` file. If you run the command `sudo vim /etc/apache2/mods-enabled/dir.conf`, it will display a prompt of the order of preference of files in the *Directory Index*. The order of preference is from left to right. 
 
@@ -290,7 +290,7 @@ sudo systemctl reload apache2
 
 ![reload apache2](./images/14.%20system%20reload.png)
 
-* Create a php script to test if php is correctly installed on your server. Run the following command and write the code below into the empty file you created as shown below:
+* Create a PHP script to test if PHP is correctly installed on your server. Run the following command and write the code below into the empty file you created as shown below:
 
 ```bash
 sudo vim /var/www/projectlamp/index.php
@@ -298,7 +298,7 @@ sudo vim /var/www/projectlamp/index.php
 
 ![php info](./images/10.%20php%20info.png)
 
-* The default directory the apache server will search for files is `/var/www/html` and the server not be able to load the `index.php` file on your browser since the php file isn't in that directory. To change the directory to `/var/www/projectlamp`, run the following command:
+* The default directory the apache server will search for files is `/var/www/html` and the server not be able to load the `index.php` file on your browser since the PHP file isn't in that directory. To change the directory to `/var/www/projectlamp`, run the following command:
 
 ```bash
 sudo vim /etc/apache2/sites-available/000-default.conf
@@ -312,7 +312,7 @@ sudo vim /etc/apache2/sites-available/000-default.conf
 
 ![php webpage](./images/10.%20php%20webpage.png)
 
-After checking the relevant information about your php server through that page, it's best to remove the file you created as it contains sensitive information about your php environment and ubuntu server. Remove the file using the command below:
+After checking the relevant information about your PHP server through that page, it's best to remove the file you created as it contains sensitive information about your PHP environment and Ubuntu server. Remove the file using the command below:
 
 ```bash
 sudo rm /var/www/projectlamp/index.php
