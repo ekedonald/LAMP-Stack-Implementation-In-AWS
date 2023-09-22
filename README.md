@@ -233,7 +233,7 @@ sudo mysql_secure_installation
 
 ![sql validate password4](./images/9.%20sql%20validate%20password4.png)
 
-* Disallow removing test database and access by typing `n`. Reload privilege tables by typing `y`.
+* Disallow removing test database and access by typing `n` and Reload privilege tables by typing `y`.
 
 ![sql validate password5](./images/9.%20sql%20validate%20password5.png)
 
