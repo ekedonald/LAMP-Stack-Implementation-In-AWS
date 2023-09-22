@@ -1,5 +1,6 @@
 # LAMP STACK IMPLEMENTATION IN AWS
 ___
+## What Is A LAMP Stack?
 A LAMP stack is an open-source stack that combines four services that the developers use to create powerful websites and applications. The base layer is the operating system called Linux, the layer for the web server is Apache, the database layer uses MySQL and PHP is used as the programming language. When used properly, these four layers enable hosting, creating, and maintaining websites and web applications.
 
 ## LAMP Stack Architecture
