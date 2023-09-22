@@ -84,7 +84,7 @@ The following steps are taken to SSH into an EC2 instance:
 
 * On your terminal, run the following command `cd Downloads` to go to the location of the `.pem` private key file.
 
-* Run the code shown below to change file permissions for the `.pem` private key file:
+* Run the code shown below to change file permissions of the `.pem` private key file:
 
 ```bash
 sudo chmod 0400 <private-key-name>.pem
@@ -248,7 +248,7 @@ The `-p` flag in the command will prompt you for the password.
 
 ### Step 6: Installing PHP
 
-In addition to the `PHP` package, you'll need `php-mysql`, a php module that allows PHP to communicate with MySQL-based databases and you'll also need `libapache2-mod-php` to enable apache to handle PHP files. Core PHP packages will automatically be installed as dependencies.
+In addition to the `php` package, you'll need `php-mysql`, a php module that allows PHP to communicate with MySQL-based databases and you'll also need `libapache2-mod-php` to enable apache to handle PHP files. Core PHP packages will automatically be installed as dependencies.
 
 * To install these 3 packages at once, run the following command:
 
@@ -278,7 +278,7 @@ sudo vim /etc/apache2/mods-enabled/dir.conf
 
 ![Direcory Index Preference1](./images/10.%20Directory%20Index%20Preference1.png)
 
-* Hence, to prioritize the `index.php` file, move its position as shown below.
+* Hence, to prioritize the `index.php` file, move its position as shown below:
 
 ![Direcory Index Prefernce2](./images/10.%20Directory%20Index%20Preference2.png)
 
