@@ -173,7 +173,7 @@ curl -s http://169.254.169.254/latest/meta-data/public-ipv4
 
 ![public ip address2](./images/5.%20public%20ip%20address2.png)
 
-It can also be retrieved by clicking on the Instance ID of the Running Instance as shown below:
+However, the public IP address can also be retrieved by clicking on the Instance ID of the Running Instance as shown below:
 
 ![public ip address1](./images/5.%20public%20ip%20address1.png)
 
@@ -217,7 +217,7 @@ sudo mysql_secure_installation
 
 ![sql secure installation](./images/9.%20sql%20secure%20intallation.png)
 
-* This will ask if you want to configure the `VALIDATE PASSWORD PLUGIN`. Enabling this feature is something of a judgment call. If enabled, passwords that don't match the specified criteria will be rejected by MySQL with an error. It is safe to leave validation disabled, but you should always use strong, unique passwords for database credentials. Answer `Y` for yes for the validate password plugin prompt.
+* This will ask if you want to configure the `VALIDATE PASSWORD PLUGIN`. Enabling this feature is something of a judgment call. If enabled, passwords that don't match the specified criteria will be rejected by MySQL with an error. It is safe to leave validation disabled, but you should always use strong, unique passwords for database credentials. Answer `y` for yes for the validate password plugin prompt.
 
 ![sql validate password1](./images/9.%20sql%20validate%20password1.png)
 
